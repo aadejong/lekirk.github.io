@@ -1,0 +1,68 @@
+body {
+	background-color: black;
+}
+
+a:link {
+	color: white;
+}
+
+a:visited {
+	color: white;
+}
+
+a:hover {
+	color: grey;
+}
+
+h1 {
+	color: white;
+	font-size: 32px;
+	font-style: bold;
+	font-family: rockwell;
+
+}
+
+h2 {
+	color: grey;
+	font-size: 20px;
+	font-style: italic;
+	font-family: verdana;
+
+
+}
+
+h3 {
+	color: grey;
+	font-size: 40px;
+	font-style: italic;
+	font-family: rockwell;
+}
+
+p {
+	font-style: bold;
+	font-family: verdana;
+	font-size: 15px;
+	color: white;
+}
+
+.column {
+	float: left;
+	padding-left: 70px;
+	padding-bottom: 70px;
+
+}
+.left {
+	width: 360px;
+	height: 755px;
+}
+
+.right {
+	width: 840px;
+	height: 755px;
+	}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}

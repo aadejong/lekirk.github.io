@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<!--
+	This website template is Helios by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Leslie Kirk | Undergraduate Capstone</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Inner -->
+						<div class="inner">
+							<header>
+								<h1><a href="index.html" id="logo">Leslie Kirk</a></h1>
+							</header>
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li><a href="about.html">About</a></li>
+								<li>
+									<a href="#">Student Work</a>
+									<ul>
+										<li><a href="undergrad_capstone.html">Undergraduate Capstone</a></li>
+										<li><a href="undergrad_cartography.html">Undergraduate Cartography</a></li>
+										<li><a href="graduate_projects.html">Graduate Projects</a></li>
+										<li><a href="graduate_capstone.html">Graduate Capstone</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="#">Professional Work</a>
+									<ul>
+										<li><a href="amp.html">Action Mapping Project</a></li>
+									</ul>
+								</li>
+								<li><a href="contact.html">Contact</a></li>
+							</ul>
+						</nav>
+
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper style1">
+
+					<div class="container">
+						<article id="main" class="special">
+							<header>
+								<h2><a href="#">Undergraduate Capstone</a></h2>
+								<p>
+									Completed for the GIS Certificate | UW Tacoma
+								</p>
+							</header>
+							<a href="#" class="image featured"><img src="images/u_capstone_1.jpg" alt="" /></a>
+							<p>
+								In urban neighborhoods, it is common for students to walk to school as well as to visit parks and friends. In such neighborhoods, pedestrian safety is vital. My project is an outgrowth of the Action Mapping Project (AMP) currently underway in Tacoma. AMP's primary goal is to bring the world of GIS to public school children. We are amplifying the voices of young people and giving them a tool to convey their perceptions of their neighborhood. As researchers, we are gathering information about how they use their space while giving them a head start in their pursuit of higher education.<p>
+							<p>
+								My project had three objectives. First, I wanted to fully incorporate participatory mapping into a project that is aimed for people. Too often maps are about people, seldom for them, and hardly ever created with them. Second, I wanted to develop a methodology to address pedestrian safety that could be replicated for additional factors later. Finally, I wanted to focus as much as possible on youth because their fears are not necessarily the same as their parents and other adults in the community.
+							</p>
+							<section>
+								<a href="#" class="image featured"><img src="images/u_capstone_2.jpg" alt="" /></a>
+								<header>
+									<h3>Qualitative Methods</h3>
+								</header>
+								<p>
+									Student participation is a key element of this project. During the AMP pilot student, students were provided a street map of the area and asked questions about where they go and what routes they take when walking. This formed the qualitative data set for my project. Besides drawing maps, students were asked open ended questions to elicit comments. One girl’s comment about being fearful walking home succinctly shows the barriers some students face every day. Going to school is not optional, and students have a right to feel comfortable when they move about their neighborhood.
+								</p>
+							</section>
+
+							<section>
+								<a href="#" class="image featured"><img src="images/u_capstone_3.jpg" alt="" /></a>
+								<header>
+									<h3>Quantitative Methods</h3>
+								</header>
+								<p>
+									First, I selected five factors with which to create a walkability index: sidewalks, street lights, stop signs, stop lights, and pedestrian-auto collisions. Early on, I found that sidewalk data did not exist, so I had to create it. I did this by opening my streets attribute in ArcMap and adding a new field for sidewalks. Zooming in on each street segment in the ESRI base map and streets layer, I looked for sidewalks. This allowed me to populate my new field and export the result to create its own shapefile. I then calculated and normalized the density rates for each factor using population or street length as applicable. After calculating Z values, factors in each block were assigned a classification of low (1), average (2), or high (3). By summing the scores for each factor in a given block, a total walkability score emerged for that census block.
+								</p>
+							</section>
+
+							<section>
+								<header>
+									<h3>Results</h3>
+								</header>
+								<p>
+									Examining these summations, I already saw that walkability was going to be mostly uniform over the entire area. Figure 1 visualizes the results spatially. In general, each census block has some feature that reduced its total score. There are no areas that could be considered completely safe for pedestrians based on my index. Missing traffic-calming measures and sidewalks were the factors most needed of improvement.
+									
+									The results comparing the quantitative data with the area and routes that students preferred aligned well. The same cannot be said for areas and routes they avoided. Figures 2 and 3 place qualitative and quantitative results side by side. We would expect areas with low walkability scores would be avoided more often than those with high walkability scores. Conversely, areas with high walkability scores should be avoided less frequently, both in terms of routes and areas. This is essentially what we see in the “areas avoided” data. The most walkable areas are also the least avoided. However, the route data is contradictory. In areas that are most walkable, we still see elevated levels of avoidance. This could represent actual avoidance or preferred avoidance, meaning students must use the route even if they would prefer another way.
+								</p>
+							</section>
+
+							<section>
+								<a href="#" class="image featured"><img src="images/u_capstone_4.jpg" alt="" /></a>
+
+								<header>
+									<h3>Area of Interest</h3>
+								</header>
+								<p>
+									One census block stood out because it received one of the lowest walkability scores of out of the 815 census blocks. Looking more closely at the z scores, accidents at or near the intersection of Portland Avenue and Pipeline Road was the primary driver. Portland Avenue is a primary arterial where cars can be expected to be traveling at high speeds. It also happens to be very near the First Creek Middle School. Regardless of the rankings of census blocks surrounding this one its proximity to where middle school children would most definitely need to walk is enough to make it the only place where a traffic change is recommended immediately. Upon visiting the site, I found sidewalks and a crosswalk beacon in front of the school which I had not expected. Even then, when I attempted to use the crosswalk on a Sunday afternoon, I nearly got hit by multiple speeding cars. I also found a cross nearby in memory of a deceased child. Clearly, a stop light versus a blinking one is in order and would better serve neighborhood youth.
+								</p>
+							</section>
+
+							<section>
+								<a href="#" class="image featured"><img src="images/u_capstone_5.jpg" alt="" /></a>
+
+								<header>
+									<h3>Conclusion</h3>
+								</header>
+								<p>
+									From a planner’s perspective, it is useful to know that walkability alone is not a determinant of youth activity. Other considerations are needed to make the routes more youth-friendly. AMP follow-up meetings should be able to offer clarifying input. One obvious difficulty with the results is there is no standard walkability reference with which to compare the subject area. Given the socioeconomic character of this part of Tacoma, other research indicates the Lincoln catchment is likely to be low for walkability in general if we were to compare it with the other urban school catchment areas. Thus, it was no surprise that the difference between low, average, and high walkability is small in this case. The AMP dataset is a new addition to a traditional walkability analysis. How it confirms or confounds what we believe about how people use their urban space is important. A study that involves all high school catchment areas across the city is certainly desirable. Similarly, understanding how large portions of the Lincoln catchment area are avoided, yet the streets that surely must run at least partially through them are not, requires more study. Students may want to avoid areas, but still must traverse them to get to school or other destinations. 
+							</section>
+
+							<section>
+								<header>
+									<h3>This project benefited from the assistance of Prof. Matthew Kelley, Garret Stone, Augustine Canales, the U.S. Census Bureau, and the Washington Department of Transporation.</h3>
+								</header>
+								<footer>
+									<a href="images/lekirk_undergrad_capstone.pdf" class="button">Download Poster PDF</a>
+								</footer>
+							</section>
+
+
+						</article>
+					</div>
+
+				</div>
+
+			<!-- Footer -->
+				<div id="footer">
+					<!-- Copyright -->
+						<div class="copyright">
+							<ul class="menu">
+								<li>&copy; Leslie Kirk. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
