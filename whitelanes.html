@@ -3,60 +3,69 @@
 	This website template is Helios by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+
+	The Leaflet map is using Choropleth JS plugin from http://timwis.com/leaflet-choropleth/
 -->
 <html>
 	<head>
 		<title>Leslie Kirk | Bike Lanes Are White Lanes</title>
+		
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		
+	<!-- website CSS-->
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
-		<!-- the leaflet CSS and JS library-->
+	<!-- the leaflet CSS and JS library-->
   		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"/>
   		<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
   
-  		<!-- Add JQuery to get local GeoJson file -->
+  	<!-- Add JQuery to get local GeoJson file -->
   		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-  		<!-- Add the choropleth JS-->
+  	<!-- Choropleth JS plugin from http://timwis.com/leaflet-choropleth/-->
     	<script src="https://timwis.com/leaflet-choropleth/dist/choropleth.js"></script>
 
-    	<!-- A style for the map element -->
-  <style>
-    #map{ width: 1000px; height: 600px;}
+    <!-- A style for the map element -->
+  		<style>
+    	#map{ width: 1000px; height: 600px;}
 
-    .legend {
-      color: #fff;
-      padding: 6px 8px;
-      font: 10px Arial, Helvetica, sans-serif;
-      font-weight: bold;
-      background: white;
-      background: rgba(0,0,0,0.8);
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
-      border-radius: 5px;
-    }
-    .legend ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-      clear: both;
-    }
-    .legend li {
-      display: inline-block;
-      width: 38px;
-      height: 22px;
-    }
-    .legend .min {
-      float: left;
-      padding-bottom: 5px;
-    }
-    .legend .max {
-      float: right;
-    }
-  </style>
+    	.legend {
+    		color: #fff;
+      		padding: 6px 8px;
+      		font: 10px Arial, Helvetica, sans-serif;
+      		font-weight: bold;
+      		background: white;
+      		background: rgba(0,0,0,0.8);
+      		box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      		border-radius: 5px;
+    	}
 
+    	.legend ul {
+      		list-style-type: none;
+      		padding: 0;
+      		margin: 0;
+      		clear: both;
+    	}
+    	
+    	.legend li {
+      		display: inline-block;
+      		width: 38px;
+      		height: 22px;
+    	}
+    
+    	.legend .min {
+      		float: left;
+      		padding-bottom: 5px;
+    	}
+
+    	.legend .max {
+      		float: right;
+    	}
+  		</style>
 	</head>
+
 	<body class="no-sidebar is-preload">
 		<div id="page-wrapper">
 
@@ -107,68 +116,76 @@
 								</p>
 							Students were asked to create a stylized static map using Leaflet and two datasets. This map was inspired by Dr. Melody Hoffman,
 							<br> who wrote the book <a href="https://www.nebraskapress.unl.edu/university-of-nebraska-press/9780803276789/">Bike Lanes Are White Lanes: Bicycle Advocacy and Urban Planning</a>.  <p>
-			<center>
-			<!-- Leaflet Map -->
+
+			<!-- the map element -->
+				<center>
 				<div id="map"></div>
 
+			<!-- the script for my Leaflet Map -->
  				<script>
 					var map = L.map('map').setView([38.90, -77.03], 15)
 
-			// Add basemap
-				L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.png', {
-  					minZoom: 13,
-  					maxZoom: 15,
-  					attribution: '&copy; Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Data from <a href="https://www.data.gov/">Data.gov</a>, <a href="https://factfinder.census.gov/faces/nav/jsf/pages/index.xhtml">American Fact Finder</a>, <a href="https://www.census.gov/geo/maps-data/data/tiger-line.html">U.S. Census Bureau</a>'
-				}).addTo(map)
+				// Basemap from http://maps.stamen.com/toner/
+					L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.png', {
+  						minZoom: 13,
+  						maxZoom: 15,
+  						attribution: '&copy; Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Data from <a href="https://www.data.gov/">Data.gov</a>, <a href="https://factfinder.census.gov/faces/nav/jsf/pages/index.xhtml">American Fact Finder</a>, <a href="https://www.census.gov/geo/maps-data/data/tiger-line.html">U.S. Census Bureau</a>'
+					}).addTo(map)
 
-			// Add GeoJSON
-				$.getJSON('assets/leaflet/WhitePopulation.geojson', function (geojson) {
- 				var choroplethLayer = L.choropleth(geojson, {
-    				valueProperty: 'White_Population_WHITE',
-    				scale: ['white', '#1c9099'],
-    				steps: 5,
-    				mode: 'q',
-    				style: {
-    			 	color: '#fff',
-      				weight: 1,
-      				fillOpacity: 0.8
-      				},
-    			onEachFeature: function (feature, layer) {
-      				layer.bindPopup(feature.properties.White_Population_WHITE.toLocaleString() + ' %')
-     			}
-  				}).addTo(map)
+				// Add a local GeoJSON file for Census Block polygons
+					$.getJSON('assets/leaflet/WhitePopulation.geojson', function (geojson) {
+ 					
+ 						// setting up the choropleth JS plugin (http://timwis.com/leaflet-choropleth/)
+ 						var choroplethLayer = L.choropleth(geojson, {
+    						valueProperty: 'White_Population_WHITE',
+    						scale: ['white', '#1c9099'],
+    						steps: 5,
+    						mode: 'q',
+    						style: {
+    			 			color: '#fff',
+      						weight: 1,
+      						fillOpacity: 0.8
+      					},
 
- 			 // Add legend 
- 	 			var legend = L.control({ position: 'bottomright' })
-  				legend.onAdd = function (map) {
-    			var div = L.DomUtil.create('div', 'info legend')
-    			var limits = choroplethLayer.options.limits
-    			var colors = choroplethLayer.options.colors
-    			var labels = ['% of population that identifies as White' + '<br>']
+      					// add pop-up information for percentage of white population
+						onEachFeature: function (feature, layer) {
+      						layer.bindPopup(feature.properties.White_Population_WHITE.toLocaleString() + ' %')
+     						}
+  						}).addTo(map)
 
-    		// Add min & max
-    			div.innerHTML = '<div class="labels"><div class="min">' + limits[0] + '</div> \
-      			<div class="max">' + limits[limits.length - 1] + '</div></div>'
+ 			 	// Add legend 
+ 	 				var legend = L.control({ position: 'bottomright' })
+  					legend.onAdd = function (map) {
+    				var div = L.DomUtil.create('div', 'info legend')
+    				var limits = choroplethLayer.options.limits
+    				var colors = choroplethLayer.options.colors
+    				var labels = ['% of population that identifies as White' + '<br>']
 
-    			limits.forEach(function (limit, index) {
-      			labels.push('<li style="background-color: ' + colors[index] + '"></li>')
-    		})
+    			// Add min & max
+    				div.innerHTML = '<div class="labels"><div class="min">' + limits[0] + '</div> \
+      				<div class="max">' + limits[limits.length - 1] + '</div></div>'
 
-    			div.innerHTML += '<ul>' + labels.join('') + '</ul>'
-    			return div
- 			}
-				legend.addTo(map)
+    				limits.forEach(function (limit, index) {
+      				labels.push('<li style="background-color: ' + colors[index] + '"></li>')
+    				})
 
-				$.getJSON("assets/leaflet/BicycleLanes.json",function(BikeData){
-      			// add GeoJSON layer to the map once the file is loaded
-      			var datalayer = L.geoJson(BikeData,{
-        			style: {
-          				color: 'orange',
-          				weight: 2
-        			}
-      			}).addTo(map);
-     				map.fitBounds(datalayer.getBounds());
-      			});
+    				div.innerHTML += '<ul>' + labels.join('') + '</ul>'
+    				return div
+ 					}
+					legend.addTo(map)
+
+				// Add a local GeoJSON file for Bike Lane polylines
+					$.getJSON("assets/leaflet/BicycleLanes.json",function(BikeData){
+      			
+      			// add GeoJSON layer to the map once the file is loaded and stylize color and weight of polyline
+      				var datalayer = L.geoJson(BikeData,{
+        				style: {
+	          					color: 'orange',
+	          				weight: 2
+        				}
+					}).addTo(map);
+     					map.fitBounds(datalayer.getBounds());
+      				});
 
 				})
     			</script>
