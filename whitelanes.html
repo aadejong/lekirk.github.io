@@ -19,8 +19,8 @@
   		<!-- Add JQuery to get local GeoJson file -->
   		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-  		<!-- Add the choropleth JS -->
-    	<script src="https://lekirk.github.io/assets/leaflet/choropleth.js"></script>
+  			<!-- Add the choropleth JS -->
+    	<script src="http://timwis.com/leaflet-choropleth/dist/choropleth.js"></script>
 
     	<!-- A style for the map element -->
   <style>
@@ -122,7 +122,7 @@
 				}).addTo(map)
 
 			// Add GeoJSON
-				$.getJSON('https://lekirk.github.io/assets/leaflet/WhitePopulation.geojson', function (geojson) {
+				$.getJSON('WhitePopulation.geojson', function (geojson) {
  				var choroplethLayer = L.choropleth(geojson, {
     				valueProperty: 'White_Population_WHITE',
     				scale: ['white', '#1c9099'],
@@ -159,7 +159,7 @@
  			}
 				legend.addTo(map)
 
-				$.getJSON("https://lekirk.github.io/assets/leaflet/BicycleLanes.json",function(BikeData){
+				$.getJSON("BicycleLanes.json",function(BikeData){
       			// add GeoJSON layer to the map once the file is loaded
       			var datalayer = L.geoJson(BikeData,{
         			style: {
