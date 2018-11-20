@@ -71,13 +71,13 @@
 			//when map loads, this tells it to do things
 				map.on('load', function(){
 			
-			//add a source data layer for the USGS earthquake feed
+			//add a source data layer for volcano data
 				map.addSource('volcanoes', {
 			       "type": "geojson",
 			       "data": "https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json"
 			    });
 			    
-			//add the earthquakes to the map
+			//add the volcanoes to the map
 			    map.addLayer({
 			    	"id":"volcano",
 			    	"type":"circle",
@@ -101,7 +101,7 @@
 			        var description = "<p>Volcano Name: " + e.features[0].properties.V_Name + "</p> <p>Location: " + e.features[0].properties.Country + "</p>";
 
 			        // Ensure that if the map is zoomed out such that multiple
-			        // copies of 	the feature are visible, the popup appears
+			        // copies of the feature are visible, the popup appears
 			        // over the copy being pointed to.
 			        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
 			            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
