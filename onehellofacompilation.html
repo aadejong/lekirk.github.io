@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<!--
+	This website template is Helios by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+
+	The Leaflet map is using Choropleth JS plugin from http://timwis.com/leaflet-choropleth/
+-->
+<html>
+	<head>
+		<title>Leslie Kirk | One H.E.L.L. of a Compilation</title>
+		
+	<!-- website CSS-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		
+		<link rel="stylesheet" href="https://cdn.knightlab.com/libs/storymapjs/latest/css/storymap.css">
+		<script type="text/javascript" src="https://cdn.knightlab.com/libs/storymapjs/latest/js/storymap-min.js"></script>
+		<script type="text/javascript" src="https://cdn.knightlab.com/libs/storymapjs/latest/js/json2.min.js"></script>
+
+		<!-- A style for the map element -->
+  		<style>
+    	#map{ width: 1000px; height: 600px;}
+  		</style>
+
+	</head>
+
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Inner -->
+						<div class="inner">
+							<header>
+								<h1><a href="index.html" id="logo">Leslie Kirk</a></h1>
+							</header>
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li><a href="about.html">About</a></li>
+								<li>
+									<a href="#">Student Work</a>
+									<ul>
+										<li><a href="undergrad_capstone.html">Undergraduate Capstone</a></li>
+										<li><a href="undergrad_cartography.html">Undergraduate Cartography</a></li>
+										<li><a href="#">Graduate Projects</a>
+
+												<ul>
+													<li><a href="webdesign.html">Web Design</a></li>
+													<li><a href="whitelanes.html">Bike Lanes Are White Lanes</a></li>
+													<li><a href="earthquakesandvolcanoes.html">Live Data: Earthquakes and Volcanoes</a></li>
+
+												</ul>
+										</li>
+
+										<li><a href="graduate_capstone.html">Graduate Capstone</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="#">Professional Work</a>
+									<ul>
+										<li><a href="amp.html">Action Mapping Project</a></li>
+									</ul>
+								</li>
+								<li><a href="contact.html">Contact</a></li>
+							</ul>
+						</nav>
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper style1">
+
+					<div class="container">
+						<article id="main" class="special">
+							<header>
+								<h2><font color="white">Real-Time Earthquake Data<br> from <a href="https://www.usgs.gov/" target="_blank">USGS</font></a></h2>
+								<p>
+							
+					<!-- The StoryMap container -->
+					<div id="mapdiv" style="width: 100%; height: 600px;"></div>
+					
+					<script>
+					// storymap_data can be an URL or a Javascript object
+					var storymap_data = 'published.json';
+
+					// certain settings must be passed within a separate options object
+					var storymap_options = {};
+
+					var storymap = new VCO.StoryMap('mapdiv', storymap_data, storymap_options);
+					window.onresize = function(event) {
+    				storymap.updateDisplay(); // this isn't automatic
+					}
+					</script>
+
+
+					<iframe src="hell_flow.html" width="100%" height="600px" scrolling="no" style="overflow:hidden"></iframe>
+
+
+				</header>
+				</article>
+				</div>
+
+				</div>
+				</center>
+
+			<!-- Footer -->
+				<div id="footer">
+					<!-- Copyright -->
+						<div class="copyright">
+							<ul class="menu">
+								<li>&copy; Leslie Kirk. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
